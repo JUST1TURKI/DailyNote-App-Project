@@ -207,6 +207,53 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 300,
+              child: Stack(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 35),
+                    width: MediaQuery.of(context).size.width,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      color: color.AppColor.homePageBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(5, 5),
+                          blurRadius: 40,
+                          color: Colors.black.withOpacity(0.4),
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        alignment: Alignment.centerLeft,
+                        image: AssetImage('assets/card.png'),
+                      ),
+                    ),
+                    child: Text('Make your own Planner'),
+                  ),
+                  Container(
+                    height: 60,
+                    width: MediaQuery.of(context).size.width,
+                    margin: const EdgeInsets.only(
+                      left: 150,
+                    ),
+                    decoration: BoxDecoration(
+                      color: color.AppColor.homePageBackground.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        alignment: Alignment.topRight,
+                        image: AssetImage('assets/Tasks.png'),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
