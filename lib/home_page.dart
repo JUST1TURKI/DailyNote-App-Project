@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:video_player_app/DesignPlanner.dart';
+import 'package:video_player_app/DesignSchedule.dart';
 import 'colors.dart' as color;
 
 class HomePage extends StatefulWidget {
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 Text(
-                  'Daily Planner',
+                  'Daily Notes',
                   style: TextStyle(
                     fontSize: 30,
                     color: color.AppColor.homePageTitle,
@@ -264,7 +264,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 30, bottom: 2),
                           child: Text(
-                            'Design Planner',
+                            'Design Schedule',
                             style: TextStyle(
                               fontSize: 21,
                               fontWeight: FontWeight.bold,
@@ -304,7 +304,7 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 Text(
-                  'My Plans',
+                  'My Notes',
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
@@ -344,7 +344,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
-                              alignment: Alignment.centerLeft,
+                              alignment: Alignment.center,
                               image: AssetImage(info[a]['img']),
                             ),
                           ),
@@ -354,7 +354,8 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 info[a]['title'],
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
                                     color: color.AppColor.homePageDetail),
                               ),
                             ],
@@ -385,7 +386,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
-                              alignment: Alignment.centerLeft,
+                              alignment: Alignment.center,
                               image: AssetImage(info[b]['img']),
                             ),
                           ),
@@ -395,7 +396,8 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 info[b]['title'],
                                 style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
                                     color: color.AppColor.homePageDetail),
                               ),
                             ],
