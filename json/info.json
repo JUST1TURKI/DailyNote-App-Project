@@ -1,23 +1,20 @@
 [
   {
-    "title": "Glutes",
-    "img": "assets/card.png"
+    "title": "Assigments",
+    "img": "assets/Assigment.png"
   },
   {
-    "title": "Abs",
-    "img": "assets/card.png"
+    "title": "Exams",
+    "img": "assets/Quiz.png"
   },
   {
-    "title": "Legs",
-    "img": "assets/card.png"
+    "title": "Notes",
+    "img": "assets/Notes.png"
   },
   {
-    "title": "Arms",
-    "img": "assets/card.png"
-  },
-  {
-    "title": "Legs",
-    "img": "assets/card.png"
+    "title": "Decisive",
+    "img": "assets/Decisive.png"
   }
+  
   
 ]
