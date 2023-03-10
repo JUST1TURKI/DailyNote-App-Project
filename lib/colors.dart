@@ -15,7 +15,7 @@ class AppColor {
   static Color secondPageTitleColor = const Color(0xFFfefeff);
   static Color secondPageContainerGradient1stColor = const Color(0xFF5564d8);
   static Color secondPageContainerGradient2ndColor = const Color(0xFF6279dc);
-  static Color secondPageIconColor = const Color(0xFFfafafe);
+  static Color secondPageIconColor = Color.fromARGB(156, 250, 250, 254);
   static Color loopColor = const Color(0xFF6d8dea);
   static Color setsColor = const Color(0xFF9999a9);
   static Color fire = const Color(0xFFe25822);

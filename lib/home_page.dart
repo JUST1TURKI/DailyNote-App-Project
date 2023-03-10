@@ -275,10 +275,15 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           width: 10,
                         ),
-                        Icon(
-                          Icons.arrow_forward,
-                          size: 20,
-                          color: color.AppColor.homePageIcons,
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => DesignSchedule());
+                          },
+                          child: Icon(
+                            Icons.arrow_forward,
+                            size: 25,
+                            color: color.AppColor.homePageIcons,
+                          ),
                         )
                       ],
                     ),
