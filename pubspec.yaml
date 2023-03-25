@@ -31,6 +31,9 @@ dependencies:
   get:
   video_player: ^2.1.1
   flutter_screenutil: ^5.3.1
+  flutter_native_splash:
+  easy_splash_screen:
+  google_fonts:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -62,11 +65,15 @@ flutter:
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+
+  fonts:
+    - family: Kanit
+      fonts:
+        - asset: assets/Kanit-ExtraBold.ttf
+    - family: Lobster
+      fonts:
+        - asset: assets/Lobster-Regular.ttf
+        
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
