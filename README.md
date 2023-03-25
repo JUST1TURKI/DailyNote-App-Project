@@ -1,6 +1,7 @@
-# flutter_application_3
+# Daily Notes
 
-A new Flutter project.
+![image](https://user-images.githubusercontent.com/117861968/224359889-4f519f5f-10f7-4179-a40f-18ec0976400a.png)
+
 
 ## Getting Started
 
