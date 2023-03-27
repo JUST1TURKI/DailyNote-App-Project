@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:video_player_app/DesignSchedule.dart';
 
-import 'SplashScreen.dart';
-import 'home_page.dart';
+import 'UI/Pages/SplashScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

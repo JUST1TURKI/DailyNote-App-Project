@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'colors.dart' as color;
+import '../colors.dart' as color;
 import 'package:get/get.dart';
 
 class DesignSchedule extends StatefulWidget {

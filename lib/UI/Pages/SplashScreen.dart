@@ -1,7 +1,7 @@
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'colors.dart' as color;
+import '../colors.dart' as color;
 import 'home_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -20,13 +20,24 @@ class _SplashPageState extends State<SplashPage> {
       ),
       logoWidth: 100,
       gradientBackground: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
         colors: [
-          color.AppColor.gradientFirst,
-          color.AppColor.gradientFirst.withOpacity(0.8),
-          color.AppColor.gradientSecond,
+          Color(0xFF072142),
+          Color(0xFF0C2A5A),
+          Color(0xFF0F346F),
+          Color(0xFF0C3B7B),
+          Color(0xFF07407F),
+          Color(0xFF004382),
         ],
-        begin: Alignment.bottomLeft,
-        end: Alignment.topRight,
+        stops: [
+          0.0,
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          1.0,
+        ],
       ),
       showLoader: false,
       loadingText: const Text(

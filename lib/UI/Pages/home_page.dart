@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:video_player_app/DesignSchedule.dart';
-import 'colors.dart' as color;
+import 'DesignSchedule.dart';
+import '../colors.dart' as color;
+import 'mission.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     _initData();
   }
 
-  double _bottom = 350;
+  double _bottom = 750;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   children: [
                     Text(
-                      'Daily Notes',
+                      'Jotter',
                       style: TextStyle(
                         fontSize: 30,
                         color: color.AppColor.homePageTitle,
@@ -421,30 +422,8 @@ class _HomePageState extends State<HomePage> {
             bottom: _bottom,
             child: Container(
               width: size.width * 1,
-              height: size.height * 0.56,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      color.AppColor.gradientFirst,
-                      color.AppColor.gradientSecond,
-                    ],
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
-                  ),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50))),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Text(
-                      'Daily Mission',
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                  ),
-                ],
-              ),
+              height: size.height * 0.82,
+              child: Missions(),
             ),
           )
         ],
@@ -452,7 +431,9 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            _bottom = (_bottom == 350 ? size.height * 0.95 : 350);
+            _bottom = (_bottom == size.height * 0.95
+                ? size.height * 0.18
+                : size.height * 0.95);
           });
         },
         backgroundColor: Color(0xff0f17ad),
