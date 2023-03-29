@@ -123,13 +123,99 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     ),
                   ],
                 ),
-                child: Column(
+                child: SingleChildScrollView(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      children: const [
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Icon(Icons.title, size: 30),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Title',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      _payload.toString().split('|')[0],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
+                    ),
+                    Row(
+                      children: const [
+                        Icon(Icons.description, size: 30),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Description',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      _payload.toString().split('|')[1],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: const [
+                        Icon(Icons.calendar_today_outlined, size: 30),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Date',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      _payload.toString().split('|')[2],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
                     ),
                   ],
-                ),
+                )),
               ),
             ),
           ],

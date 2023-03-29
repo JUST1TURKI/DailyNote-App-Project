@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 import 'UI/Pages/SplashScreen.dart';
 import 'UI/Pages/notification_screen.dart';
 
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Daily Note',
       theme: ThemeData(fontFamily: 'Kanit'),
       home: NotificationScreen(
-        payload: '',
+        payload: 'Title|Description|Date',
       ),
     );
   }
