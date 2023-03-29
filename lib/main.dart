@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'UI/Pages/SplashScreen.dart';
+import 'UI/Pages/notification_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Daily Note',
       theme: ThemeData(fontFamily: 'Kanit'),
-      home: SplashPage(),
+      home: NotificationScreen(
+        payload: '',
+      ),
     );
   }
 }

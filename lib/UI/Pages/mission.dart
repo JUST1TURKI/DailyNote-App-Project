@@ -12,23 +12,21 @@ class _Missions extends State<Missions> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.white.withOpacity(0),
         body: Container(
-      child: Container(
-        width: size.width * 1,
-        height: size.height * 1,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                color.AppColor.gradientFirst,
-                color.AppColor.gradientSecond,
-              ],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-            ),
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(60),
-                bottomRight: Radius.circular(60))),
-      ),
-    ));
+          width: size.width,
+          height: size.height,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  color.AppColor.gradientFirst,
+                  color.AppColor.gradientSecond,
+                ],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              ),
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(60), topRight: Radius.circular(60))),
+        ));
   }
 }

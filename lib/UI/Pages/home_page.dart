@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'DesignSchedule.dart';
 import '../colors.dart' as color;
 import 'mission.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -416,25 +417,37 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          AnimatedPositioned(
-            duration: Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-            bottom: _bottom,
-            child: Container(
-              width: size.width * 1,
-              height: size.height * 0.82,
-              child: Missions(),
-            ),
-          )
+          // AnimatedPositioned(
+          //   duration: Duration(milliseconds: 500),
+          //   curve: Curves.easeInOut,
+          //   bottom: _bottom,
+          //   child: Container(
+          //     width: size.width * 1,
+          //     height: size.height * 0.82,
+          //     child: Missions(),
+          //   ),
+          // )
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            _bottom = (_bottom == size.height * 0.95
-                ? size.height * 0.18
-                : size.height * 0.95);
-          });
+          // setState(() {
+          //   _bottom = (_bottom == size.height * 0.95
+          //       ? size.height * 0.18
+          //       : size.height * 0.95);
+          // });
+          showModalBottomSheet(
+            backgroundColor: Colors.white.withOpacity(0),
+            context: context,
+            builder: (context) {
+              return Container(
+                width: size.width,
+                height: size.height,
+                color: Colors.white.withOpacity(0),
+                child: Missions(),
+              );
+            },
+          );
         },
         backgroundColor: Color(0xff0f17ad),
         child: const Icon(
