@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:video_player_app/UI/size_config.dart';
+import 'package:video_player_app/UI/widgets/button.dart';
+import 'package:video_player_app/UI/widgets/input_field.dart';
 import '../colors.dart' as color;
 import 'package:rive/rive.dart';
 import 'package:flutter/src/painting/gradient.dart' as flutter;
@@ -25,6 +28,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    SizeConfig().init(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
