@@ -50,8 +50,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 120,
+                width: size.width,
+                height: size.height * 0.15,
                 child: Row(
                   children: [
                     InkWell(
@@ -105,23 +105,30 @@ class _NotificationScreenState extends State<NotificationScreen> {
             Expanded(
               child: Container(
                 margin: const EdgeInsets.only(left: 20, right: 20, bottom: 40),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 width: size.width,
                 height: size.height,
                 decoration: BoxDecoration(
                   color: Get.isDarkMode ? Colors.black : Colors.white,
                   borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(100),
-                    topLeft: Radius.circular(100),
-                    bottomRight: Radius.circular(100),
-                    bottomLeft: Radius.circular(100),
+                    topRight: Radius.circular(60),
+                    topLeft: Radius.circular(60),
+                    bottomRight: Radius.circular(60),
+                    bottomLeft: Radius.circular(60),
                   ),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       offset: Offset(7, 10),
                       blurRadius: 15,
                       color: Colors.black,
                     ),
                   ],
+                  image: const DecorationImage(
+                    alignment: Alignment.bottomCenter,
+                    fit: BoxFit.fitWidth,
+                    image: AssetImage('assets/notifiction.png'),
+                  ),
                 ),
                 child: SingleChildScrollView(
                     child: Column(
