@@ -20,16 +20,13 @@ class InputField extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(left: 15),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      width: SizeConfig.screenWidth,
-      height: size.height * 0.5,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(12),
         ),
         border: Border.all(
-          color: Colors.grey,
+          color: Colors.white.withOpacity(0),
         ),
-        color: Colors.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +40,7 @@ class InputField extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8),
             margin: const EdgeInsets.only(left: 8),
             width: SizeConfig.screenWidth,
-            height: size.height * 0.05,
+            height: size.height * 0.06,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(12),
@@ -61,7 +58,7 @@ class InputField extends StatelessWidget {
                       controller: controller,
                       autofocus: false,
                       readOnly: widget != null ? true : false,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
@@ -70,7 +67,7 @@ class InputField extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: hint,
                         hintStyle: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: Colors.black.withOpacity(0.4),
                           fontWeight: FontWeight.bold,
                         ),
