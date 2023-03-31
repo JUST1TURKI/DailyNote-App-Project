@@ -455,6 +455,14 @@ class _HomePageState extends State<HomePage> {
           size: 30,
           color: Colors.white,
         ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(60),
+            topRight: Radius.circular(20),
+            bottomLeft: Radius.circular(60),
+            bottomRight: Radius.circular(60),
+          ),
+        ),
       ),
     );
   }

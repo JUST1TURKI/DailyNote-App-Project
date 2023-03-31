@@ -12,7 +12,7 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: size.width * 0.25,
+        width: size.width * 0.15,
         height: size.height * 0.045,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -36,10 +36,10 @@ class MyButton extends StatelessWidget {
             ],
           ),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(5),
-            bottomLeft: Radius.circular(5),
-            bottomRight: Radius.circular(15),
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(10),
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(20),
           ),
         ),
         child: Center(
@@ -47,6 +47,7 @@ class MyButton extends StatelessWidget {
             label,
             style: const TextStyle(
               color: Colors.white,
+              fontSize: 18,
             ),
             textAlign: TextAlign.center,
           ),

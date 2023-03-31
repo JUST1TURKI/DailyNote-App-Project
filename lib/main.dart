@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'UI/Pages/SplashScreen.dart';
+import 'UI/Pages/addTaskPage.dart';
+import 'UI/Pages/home_page.dart';
 import 'UI/Pages/notification_screen.dart';
 import 'UI/Pages/try.dart';
 import 'UI/widgets/button.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Daily Note',
         theme: ThemeData(fontFamily: 'Kanit'),
-        home: TryScreen()
+        home: AddTaskPage()
         //  NotificationScreen(
         //   payload: 'Title|Description|Date',
         // ),
