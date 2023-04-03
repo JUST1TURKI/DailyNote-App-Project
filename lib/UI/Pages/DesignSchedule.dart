@@ -1,3 +1,4 @@
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import '../colors.dart' as color;
 import 'package:get/get.dart';
@@ -95,7 +96,7 @@ class _DesignScheduleState extends State<DesignSchedule> {
                 color: Colors.white,
                 borderRadius: BorderRadius.only(topRight: Radius.circular(100)),
               ),
-            ))
+            )),
           ],
         ),
       ),
