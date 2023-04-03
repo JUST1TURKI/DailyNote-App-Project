@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:video_player_app/UI/Pages/home_page.dart';
 import 'package:video_player_app/controller/task_controller.dart';
+import 'package:video_player_app/services/notification_services.dart';
 import '../colors.dart' as color;
 
 import '../size_config.dart';
@@ -78,19 +79,23 @@ class _AddTaskPage extends State<AddTaskPage> {
               ),
               child: Row(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: Icon(
-                        Icons.arrow_back_ios_new,
-                        size: 22,
-                        color: color.AppColor.secondPageIconColor,
-                      ),
-                    ),
-                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    child: IconButton(
+                        onPressed: () {
+                          Get.back();
+                          NotifyHelper().disolayNotification(
+                            title: 'Back To Home Page',
+                            body: 'SIIUUU',
+                          );
+                          NotifyHelper().scheduledNotification();
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_new,
+                          size: 22,
+                          color: color.AppColor.secondPageIconColor,
+                        )),
+                  )
                 ],
               ),
             ),
