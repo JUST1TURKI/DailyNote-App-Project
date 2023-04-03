@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../colors.dart' as color;
 
 class MyButton extends StatelessWidget {
   const MyButton({Key? key, required this.label, required this.onTap})
@@ -12,34 +13,23 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: size.width * 0.15,
+        alignment: Alignment.center,
+        width: size.width * 0.21,
         height: size.height * 0.045,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF072142),
-              Color(0xFF0C2A5A),
-              Color(0xFF0F346F),
-              Color(0xFF0C3B7B),
-              Color(0xFF07407F),
-              Color(0xFF004382),
+              color.AppColor.gradientFirst,
+              color.AppColor.gradientFirst.withOpacity(0.8),
             ],
-            stops: [
-              0.0,
-              0.1,
-              0.25,
-              0.5,
-              0.75,
-              1.0,
-            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
           ),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-            bottomRight: Radius.circular(20),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(8),
+            bottomLeft: Radius.circular(8),
+            bottomRight: Radius.circular(15),
           ),
         ),
         child: Center(

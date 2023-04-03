@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Daily Note',
         theme: ThemeData(fontFamily: 'Kanit'),
-        home: AddTaskPage()
+        home: HomePage()
         //  NotificationScreen(
         //   payload: 'Title|Description|Date',
         // ),

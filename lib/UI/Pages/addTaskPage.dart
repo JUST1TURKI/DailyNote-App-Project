@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:video_player_app/UI/Pages/home_page.dart';
 import 'package:video_player_app/controller/task_controller.dart';
 import '../colors.dart' as color;
 
@@ -48,6 +49,7 @@ class _AddTaskPage extends State<AddTaskPage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -71,53 +73,70 @@ class _AddTaskPage extends State<AddTaskPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.1,
-                child: Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: Icon(
-                          Icons.arrow_back_ios_new,
-                          size: 20,
-                          color: color.AppColor.secondPageIconColor,
+              padding: const EdgeInsets.only(
+                left: 20,
+              ),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 22,
+                        color: color.AppColor.secondPageIconColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30),
+                      child: Text(
+                        'Add Task',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          color: color.AppColor.secondPageTitleColor,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Column(
-              children: [
-                Center(
-                  child: Text(
-                    'Add Task',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: color.AppColor.secondPageTitleColor,
-                    ),
                   ),
                 ),
+                Expanded(
+                  child: Container(
+                    height: size.height * 0.2,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        alignment: Alignment.bottomCenter,
+                        fit: BoxFit.fitHeight,
+                        image: AssetImage('assets/AddTask.png'),
+                      ),
+                    ),
+                  ),
+                )
               ],
-            ),
-            SizedBox(
-              height: 20,
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(60),
-                    topLeft: Radius.circular(60),
+                    topRight: Radius.circular(42),
+                    topLeft: Radius.circular(42),
+                  ),
+                  image: DecorationImage(
+                    alignment: Alignment.bottomLeft,
+                    fit: BoxFit.fitWidth,
+                    image: AssetImage('assets/PencilTask.png'),
                   ),
                 ),
                 child: Padding(
@@ -254,6 +273,20 @@ class _AddTaskPage extends State<AddTaskPage> {
                             },
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              _colorPalette(),
+                              MyButton(
+                                  label: 'Create',
+                                  onTap: () {
+                                    Get.back();
+                                  })
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -263,6 +296,47 @@ class _AddTaskPage extends State<AddTaskPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Column _colorPalette() {
+    return Column(
+      children: [
+        Text(
+          'Color',
+          style: _textStyle,
+        ),
+        Wrap(
+          children: List.generate(
+            3,
+            (index) => GestureDetector(
+              onTap: () {
+                setState(() {
+                  _selectedColor = index;
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: CircleAvatar(
+                  child: _selectedColor == index
+                      ? const Icon(
+                          Icons.done,
+                          color: Colors.white,
+                          size: 18,
+                        )
+                      : null,
+                  backgroundColor: index == 0
+                      ? const Color(0xFF0052BE)
+                      : index == 1
+                          ? const Color(0xFF8205FF)
+                          : const Color(0xFFB60A52),
+                  radius: 14,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
