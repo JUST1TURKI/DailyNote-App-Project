@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../services/notification_services.dart';
 import 'DesignSchedule.dart';
 import '../colors.dart' as color;
 import 'mission.dart';
@@ -13,17 +14,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late NotifyHelper notifyHelper;
+  @override
+  void initState() {
+    super.initState();
+
+    notifyHelper = NotifyHelper();
+    notifyHelper.requestIOSpermission();
+    notifyHelper.initializeNotification();
+
+    _initData();
+  }
+
   List info = [];
   _initData() {
     DefaultAssetBundle.of(context)
         .loadString('json/info.json')
         .then((value) => info = json.decode(value));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _initData();
   }
 
   @override

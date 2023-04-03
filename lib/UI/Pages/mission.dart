@@ -1,5 +1,6 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:video_player_app/UI/widgets/button.dart';
@@ -39,6 +40,7 @@ class _Missions extends State<Missions> {
             children: [
               _AddTask(),
               _AddDate(),
+              Expanded(child: _noTaskMsg()),
             ],
           ),
         ));
@@ -114,6 +116,44 @@ class _Missions extends State<Missions> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _noTaskMsg() {
+    return Stack(
+      children: [
+        AnimatedPositioned(
+          duration: Duration(seconds: 2),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                SvgPicture.asset(
+                  'assets/task.svg',
+                  height: 60,
+                  semanticsLabel: 'Task',
+                  color: Colors.black.withOpacity(0.4),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  child: Text(
+                    'No Tasks there',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
