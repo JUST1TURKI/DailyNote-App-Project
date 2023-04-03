@@ -1,3 +1,4 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +15,7 @@ class Missions extends StatefulWidget {
 
 class _Missions extends State<Missions> {
   final TaskController _taskController = Get.put(TaskController());
+  DateTime _selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,9 +36,33 @@ class _Missions extends State<Missions> {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(60), topRight: Radius.circular(60))),
           child: Column(
-            children: [_AddTask()],
+            children: [
+              _AddTask(),
+              _AddDate(),
+            ],
           ),
         ));
+  }
+
+// ! Add Date
+  Container _AddDate() {
+    return Container(
+      margin: EdgeInsets.only(left: 8),
+      child: DatePicker(
+        DateTime.now(),
+        width: 70,
+        height: 90,
+        selectedTextColor: Colors.white,
+        selectionColor: Color(0x880006BE),
+        initialSelectedDate: DateTime.now(),
+        dateTextStyle: TextStyle(fontSize: 24),
+        onDateChange: (newDate) {
+          setState(() {
+            _selectedDate = newDate;
+          });
+        },
+      ),
+    );
   }
 
 // ! Add Task
@@ -80,8 +106,9 @@ class _Missions extends State<Missions> {
           Expanded(
             child: MyButton(
               label: 'add Task',
-              onTap: () {
-                Get.to(const AddTaskPage());
+              onTap: () async {
+                await Get.to(const AddTaskPage());
+                _taskController.getTask();
               },
             ),
           ),
