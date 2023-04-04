@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return EasySplashScreen(
       logo: Image.asset(
-        'assets/Splash.png',
+        'assets/splash.png',
       ),
       logoWidth: 100,
       gradientBackground: LinearGradient(

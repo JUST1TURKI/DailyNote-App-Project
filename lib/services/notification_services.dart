@@ -13,7 +13,7 @@ class NotifyHelper {
     tz.initializeTimeZones();
     // tz.setLocalLocation(tz.getLocation(timeZoneName));
     final AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('Splash');
+        AndroidInitializationSettings('splash');
     final IOSInitializationSettings initializationSettingsDarwin =
         IOSInitializationSettings(
       requestSoundPermission: false,

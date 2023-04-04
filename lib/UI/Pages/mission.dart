@@ -4,8 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:video_player_app/UI/widgets/button.dart';
+import 'package:video_player_app/UI/widgets/task_tile.dart';
 import 'package:video_player_app/controller/task_controller.dart';
+import '../../models/task.dart';
 import '../colors.dart' as color;
+import '../size_config.dart';
 import 'addTaskPage.dart';
 
 class Missions extends StatefulWidget {
@@ -36,12 +39,54 @@ class _Missions extends State<Missions> {
               ),
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(60), topRight: Radius.circular(60))),
-          child: Column(
-            children: [
-              _AddTask(),
-              _AddDate(),
-              Expanded(child: _noTaskMsg()),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _AddTask(),
+                _AddDate(),
+                GestureDetector(
+                  onTap: (() {
+                    showBottomSheet(
+                        context,
+                        Task(
+                          title: 'Title1',
+                          note: 'Note Something',
+                          startTime: '20:18AM',
+                          endTime: '2:18PM',
+                          color: 0,
+                          isCompleted: 0,
+                        ));
+                  }),
+                  child: TaskTile(
+                      task: Task(
+                    title: 'Title1',
+                    note: 'Note Something',
+                    startTime: '20:18AM',
+                    endTime: '2:18PM',
+                    color: 0,
+                    isCompleted: 0,
+                  )),
+                ),
+                // TaskTile(
+                //     task: Task(
+                //   title: 'Title1',
+                //   note: 'Note Something',
+                //   startTime: '20:18AM',
+                //   endTime: '2:18PM',
+                //   color: 1,
+                //   isCompleted: 1,
+                // )),
+                // TaskTile(
+                //     task: Task(
+                //   title: 'Title1',
+                //   note: 'Note Something',
+                //   startTime: '20:18AM',
+                //   endTime: '2:18PM',
+                //   color: 2,
+                //   isCompleted: 0,
+                // )),
+              ],
+            ),
           ),
         ));
   }
@@ -154,6 +199,85 @@ class _Missions extends State<Missions> {
           ),
         ),
       ],
+    );
+  }
+
+  showBottomSheet(BuildContext context, Task task) {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.only(top: 4),
+          height: task.isCompleted == 1
+              ? SizeConfig.screenHeight * 0.15
+              : SizeConfig.screenHeight * 0.23,
+          color: Colors.white.withOpacity(0.1),
+          child: Column(
+            children: [
+              Flexible(
+                child: Container(
+                  height: 6,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black.withOpacity(0.4),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              task.isCompleted == 1
+                  ? Container()
+                  : _buildBottomSheet(
+                      label: 'Task Completed',
+                      onTap: () {
+                        Get.back();
+                      },
+                      clr: Colors.black,
+                    ),
+              _buildBottomSheet(
+                label: 'Delete Task',
+                onTap: () {
+                  Get.back();
+                },
+                clr: Colors.red,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildBottomSheet(
+      {required String label,
+      required Function() onTap,
+      required Color clr,
+      bool isClose = false}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        height: 65,
+        width: SizeConfig.screenWidth * 0.8,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 2,
+            color: isClose ? Colors.grey : clr,
+          ),
+          borderRadius: BorderRadius.circular(20),
+          color: isClose ? Colors.transparent : clr,
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

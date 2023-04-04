@@ -84,11 +84,11 @@ class _AddTaskPage extends State<AddTaskPage> {
                     child: IconButton(
                         onPressed: () {
                           Get.back();
-                          NotifyHelper().disolayNotification(
-                            title: 'Back To Home Page',
-                            body: 'SIIUUU',
-                          );
-                          NotifyHelper().scheduledNotification();
+                          // NotifyHelper().disolayNotification(
+                          //   title: 'Back To Home Page',
+                          //   body: 'SIIUUU',
+                          // );
+                          // NotifyHelper().scheduledNotification();
                         },
                         icon: Icon(
                           Icons.arrow_back_ios_new,

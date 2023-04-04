@@ -6,7 +6,6 @@ import 'UI/Pages/SplashScreen.dart';
 import 'UI/Pages/addTaskPage.dart';
 import 'UI/Pages/home_page.dart';
 import 'UI/Pages/notification_screen.dart';
-import 'UI/Pages/try.dart';
 import 'UI/widgets/button.dart';
 
 void main() async {
