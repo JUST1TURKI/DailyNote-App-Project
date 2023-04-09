@@ -12,13 +12,13 @@ class TaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(24),
+          horizontal: getProportionateScreenWidth(12),
           vertical: getProportionateScreenHeight(10)),
       child: Container(
         margin: EdgeInsets.only(bottom: getProportionateScreenHeight(1)),
         width: SizeConfig.screenWidth,
         child: Container(
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(14),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: _getBGClr(task.color),

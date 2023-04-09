@@ -1,5 +1,6 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -7,6 +8,7 @@ import 'package:video_player_app/UI/widgets/button.dart';
 import 'package:video_player_app/UI/widgets/task_tile.dart';
 import 'package:video_player_app/controller/task_controller.dart';
 import '../../models/task.dart';
+import '../../services/notification_services.dart';
 import '../colors.dart' as color;
 import '../size_config.dart';
 import 'addTaskPage.dart';
@@ -39,56 +41,54 @@ class _Missions extends State<Missions> {
               ),
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(60), topRight: Radius.circular(60))),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                _AddTask(),
-                _AddDate(),
-                GestureDetector(
-                  onTap: (() {
-                    showBottomSheet(
-                        context,
-                        Task(
-                          title: 'Title1',
-                          note: 'Note Something',
-                          startTime: '20:18AM',
-                          endTime: '2:18PM',
-                          color: 0,
-                          isCompleted: 0,
-                        ));
-                  }),
-                  child: TaskTile(
-                      task: Task(
-                    title: 'Title1',
-                    note: 'Note Something',
-                    startTime: '20:18AM',
-                    endTime: '2:18PM',
-                    color: 0,
-                    isCompleted: 0,
-                  )),
-                ),
-                // TaskTile(
-                //     task: Task(
-                //   title: 'Title1',
-                //   note: 'Note Something',
-                //   startTime: '20:18AM',
-                //   endTime: '2:18PM',
-                //   color: 1,
-                //   isCompleted: 1,
-                // )),
-                // TaskTile(
-                //     task: Task(
-                //   title: 'Title1',
-                //   note: 'Note Something',
-                //   startTime: '20:18AM',
-                //   endTime: '2:18PM',
-                //   color: 2,
-                //   isCompleted: 0,
-                // )),
-              ],
-            ),
+          // child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _AddTask(),
+              _AddDate(),
+              SizedBox(height: 10),
+              _showTasks(),
+            ],
           ),
+          // ),
         ));
+  }
+
+  _showTasks() {
+    return Expanded(
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext context, int index) {
+          var task = _taskController.taskList[index];
+          var hour = task.startTime.toString().split(":")[0];
+          var minutes = task.startTime.toString().split(":")[1];
+          var date = DateFormat.jm().parse(task.startTime!);
+          var myTime = DateFormat('HH:mm').format(date);
+          SizeConfig().init(context);
+          NotifyHelper().scheduledNotification(
+            int.parse(myTime.toString().split(":")[0]),
+            int.parse(myTime.toString().split(":")[1]),
+            task,
+          );
+          return AnimationConfiguration.staggeredList(
+            duration: Duration(milliseconds: 750),
+            position: index,
+            child: SlideAnimation(
+              horizontalOffset: 300,
+              child: FadeInAnimation(
+                child: GestureDetector(
+                  onTap: () => showBottomSheet(context, task),
+                  child: TaskTile(
+                    task: task,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        itemCount: _taskController.taskList.length,
+      ),
+    );
   }
 
 // ! Add Date
