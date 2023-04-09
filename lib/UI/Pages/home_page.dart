@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     notifyHelper = NotifyHelper();
-    notifyHelper.requestIOSpermission();
+    notifyHelper.requestIOSPermissions();
     notifyHelper.initializeNotification();
 
     _initData();
