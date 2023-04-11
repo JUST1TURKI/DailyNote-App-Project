@@ -71,7 +71,7 @@ class _Missions extends State<Missions> {
             task,
           );
           return AnimationConfiguration.staggeredList(
-            duration: Duration(milliseconds: 750),
+            duration: const Duration(milliseconds: 750),
             position: index,
             child: SlideAnimation(
               horizontalOffset: 300,

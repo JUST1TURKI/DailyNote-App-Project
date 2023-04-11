@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:video_player_app/UI/Pages/home_page.dart';
 import 'package:video_player_app/controller/task_controller.dart';
 import 'package:video_player_app/services/notification_services.dart';
+import '../../models/task.dart';
 import '../colors.dart' as color;
 
 import '../size_config.dart';
@@ -287,7 +288,7 @@ class _AddTaskPage extends State<AddTaskPage> {
                               MyButton(
                                   label: 'Create',
                                   onTap: () {
-                                    Get.back();
+                                    _validateDate();
                                   })
                             ],
                           ),
@@ -302,6 +303,44 @@ class _AddTaskPage extends State<AddTaskPage> {
         ),
       ),
     );
+  }
+
+  _validateDate() {
+    if (_titleController.text.isNotEmpty && _noteController.text.isNotEmpty) {
+      _addTaskToDb();
+      Get.back();
+    } else if (_titleController.text.isEmpty || _noteController.text.isEmpty) {
+      Get.snackbar(
+        'required',
+        'All fields are required',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.white.withOpacity(0),
+        colorText: Colors.red,
+        icon: const Icon(
+          Icons.warning_amber_rounded,
+          color: Colors.red,
+        ),
+      );
+    } else {
+      print('SOMETHING BAD HAPPENED');
+    }
+  }
+
+  _addTaskToDb() async {
+    int value = await _taskController.addTask(
+      task: Task(
+        title: _titleController.text,
+        note: _noteController.text,
+        isCompleted: 0,
+        date: DateFormat.yMd().format(_selectedDate),
+        startTime: _startTime,
+        endTime: _endTime,
+        color: _selectedColor,
+        remind: _selectedRemind,
+        repeat: _selectRepeat,
+      ),
+    );
+    print('$value');
   }
 
   Column _colorPalette() {
@@ -334,7 +373,7 @@ class _AddTaskPage extends State<AddTaskPage> {
                       ? const Color(0xFF0052BE)
                       : index == 1
                           ? const Color(0xFF8205FF)
-                          : const Color(0xFFB60A52),
+                          : Color(0xFFB6740A),
                   radius: 14,
                 ),
               ),

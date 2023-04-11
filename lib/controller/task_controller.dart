@@ -9,19 +9,20 @@ class TaskController extends GetxController {
     Task(
       title: 'Title1',
       note: 'Note Something',
-      startTime: '20:18AM',
+      startTime: '2:16AM',
       endTime: '2:18PM',
       color: 0,
       isCompleted: 0,
     ),
     Task(
-      title: 'Title1',
-      note: 'Note Something',
-      startTime: '20:18AM',
-      endTime: '2:18PM',
-      color: 0,
-      isCompleted: 0,
+      title: 'Title2',
+      note: 'Note Something here',
+      startTime: '2:19AM',
+      endTime: '2:10PM',
+      color: 2,
+      isCompleted: 1,
     ),
   ];
+  addTask({Task? task}) {}
   getTask() {}
 }

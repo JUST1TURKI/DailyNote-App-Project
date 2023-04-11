@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:video_player_app/db/db_helper.dart';
 import 'package:video_player_app/services/notification_services.dart';
 import 'UI/Pages/SplashScreen.dart';
 import 'UI/Pages/addTaskPage.dart';
@@ -16,20 +17,25 @@ void main() async {
       DeviceOrientation.portraitDown,
     ],
   );
-  runApp(MyApp());
+
   WidgetsFlutterBinding.ensureInitialized;
   // NotifyHelper notifyHelper = NotifyHelper();
   // await notifyHelper.initializeNotification();
+  await DBHelper.initDb();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Daily Note',
         theme: ThemeData(fontFamily: 'Kanit'),
-        home: HomePage()
+        home: const SplashPage()
         //  NotificationScreen(
         //   payload: 'Title|Description|Date',
         // ),
