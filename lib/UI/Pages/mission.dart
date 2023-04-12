@@ -65,40 +65,37 @@ class _Missions extends State<Missions> {
         if (_taskController.taskList.isEmpty) {
           return _noTaskMsg();
         } else {
-          return RefreshIndicator(
-            onRefresh: _onRefresh,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                var task = _taskController.taskList[index];
-                var hour = task.startTime.toString().split(":")[0];
-                var minutes = task.startTime.toString().split(":")[1];
-                var date = DateFormat.jm().parse(task.startTime!);
-                var myTime = DateFormat('HH:mm').format(date);
-                SizeConfig().init(context);
-                NotifyHelper().scheduledNotification(
-                  int.parse(myTime.toString().split(":")[0]),
-                  int.parse(myTime.toString().split(":")[1]),
-                  task,
-                );
-                return AnimationConfiguration.staggeredList(
-                  duration: const Duration(milliseconds: 750),
-                  position: index,
-                  child: SlideAnimation(
-                    horizontalOffset: 300,
-                    child: FadeInAnimation(
-                      child: GestureDetector(
-                        onTap: () => showBottomSheet(context, task),
-                        child: TaskTile(
-                          task: task,
-                        ),
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (BuildContext context, int index) {
+              var task = _taskController.taskList[index];
+              var hour = task.startTime.toString().split(":")[0];
+              var minutes = task.startTime.toString().split(":")[1];
+              var date = DateFormat.jm().parse(task.startTime!);
+              var myTime = DateFormat('HH:mm').format(date);
+              SizeConfig().init(context);
+              NotifyHelper().scheduledNotification(
+                int.parse(myTime.toString().split(":")[0]),
+                int.parse(myTime.toString().split(":")[1]),
+                task,
+              );
+              return AnimationConfiguration.staggeredList(
+                duration: const Duration(milliseconds: 750),
+                position: index,
+                child: SlideAnimation(
+                  horizontalOffset: 300,
+                  child: FadeInAnimation(
+                    child: GestureDetector(
+                      onTap: () => showBottomSheet(context, task),
+                      child: TaskTile(
+                        task: task,
                       ),
                     ),
                   ),
-                );
-              },
-              itemCount: _taskController.taskList.length,
-            ),
+                ),
+              );
+            },
+            itemCount: _taskController.taskList.length,
           );
         }
       }),
@@ -183,35 +180,32 @@ class _Missions extends State<Missions> {
       children: [
         AnimatedPositioned(
           duration: Duration(seconds: 2),
-          child: RefreshIndicator(
-            onRefresh: _onRefresh,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SvgPicture.asset(
-                    'assets/task.svg',
-                    height: 60,
-                    semanticsLabel: 'Task',
-                    color: Colors.black.withOpacity(0.4),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    child: Text(
-                      'No Tasks there',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                      textAlign: TextAlign.center,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                SvgPicture.asset(
+                  'assets/task.svg',
+                  height: 60,
+                  semanticsLabel: 'Task',
+                  color: Colors.black.withOpacity(0.4),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  child: Text(
+                    'No Tasks there',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

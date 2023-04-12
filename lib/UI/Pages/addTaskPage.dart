@@ -163,7 +163,6 @@ class _AddTaskPage extends State<AddTaskPage> {
                         InputField(
                           title: 'Date',
                           hint: DateFormat.yMd().format(_selectedDate),
-                          controller: _noteController,
                           widget: IconButton(
                               onPressed: () => _getDateFromUser(),
                               icon: const Icon(
@@ -177,7 +176,6 @@ class _AddTaskPage extends State<AddTaskPage> {
                               child: InputField(
                                 title: 'Start Time',
                                 hint: _startTime,
-                                controller: _noteController,
                                 widget: IconButton(
                                   onPressed: () =>
                                       _getTimeFromUser(isStartTime: true),
@@ -195,7 +193,6 @@ class _AddTaskPage extends State<AddTaskPage> {
                               child: InputField(
                                 title: 'End Time',
                                 hint: _endTime,
-                                controller: _noteController,
                                 widget: IconButton(
                                   onPressed: () =>
                                       _getTimeFromUser(isStartTime: false),
@@ -211,7 +208,6 @@ class _AddTaskPage extends State<AddTaskPage> {
                         InputField(
                           title: 'Remind',
                           hint: '$_selectedRemind minutes early',
-                          controller: _noteController,
                           widget: Padding(
                             padding: EdgeInsets.only(right: 5),
                             child: DropdownButton(
@@ -249,7 +245,6 @@ class _AddTaskPage extends State<AddTaskPage> {
                         InputField(
                           title: 'Repeat',
                           hint: _selectRepeat,
-                          controller: _noteController,
                           widget: DropdownButton(
                             dropdownColor: Colors.grey,
                             borderRadius: BorderRadius.circular(10),
