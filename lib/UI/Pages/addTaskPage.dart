@@ -141,8 +141,8 @@ class _AddTaskPage extends State<AddTaskPage> {
                   ),
                   image: DecorationImage(
                     alignment: Alignment.bottomLeft,
-                    fit: BoxFit.fitWidth,
-                    image: AssetImage('assets/PencilTask.png'),
+                    fit: BoxFit.fill,
+                    image: AssetImage('assets/AddTaskFour.png'),
                   ),
                 ),
                 child: Padding(
@@ -165,7 +165,7 @@ class _AddTaskPage extends State<AddTaskPage> {
                           hint: DateFormat.yMd().format(_selectedDate),
                           controller: _noteController,
                           widget: IconButton(
-                              onPressed: () {},
+                              onPressed: () => _getDateFromUser(),
                               icon: const Icon(
                                 Icons.calendar_today_outlined,
                                 color: Colors.grey,
@@ -179,7 +179,8 @@ class _AddTaskPage extends State<AddTaskPage> {
                                 hint: _startTime,
                                 controller: _noteController,
                                 widget: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      _getTimeFromUser(isStartTime: true),
                                   icon: const Icon(
                                     Icons.access_time_rounded,
                                     color: Colors.grey,
@@ -196,7 +197,8 @@ class _AddTaskPage extends State<AddTaskPage> {
                                 hint: _endTime,
                                 controller: _noteController,
                                 widget: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      _getTimeFromUser(isStartTime: false),
                                   icon: const Icon(
                                     Icons.access_time_rounded,
                                     color: Colors.grey,
@@ -382,5 +384,43 @@ class _AddTaskPage extends State<AddTaskPage> {
         )
       ],
     );
+  }
+
+  _getDateFromUser() async {
+    DateTime? _pickedDate = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2054),
+    );
+    if (_pickedDate != null) {
+      setState(() {
+        _selectedDate = _pickedDate;
+      });
+    } else
+      print('SOMETHING WRONG HAPPENED');
+  }
+
+  _getTimeFromUser({required bool isStartTime}) async {
+    TimeOfDay? _pickedTime = await showTimePicker(
+      initialEntryMode: TimePickerEntryMode.input,
+      context: context,
+      initialTime: isStartTime
+          ? TimeOfDay.fromDateTime(DateTime.now())
+          : TimeOfDay.fromDateTime(
+              DateTime.now().add(const Duration(minutes: 15))),
+    );
+    String _formattingTime = _pickedTime!.format(context);
+    if (isStartTime) {
+      setState(() {
+        _startTime = _formattingTime;
+      });
+    } else if (!isStartTime) {
+      setState(() {
+        _endTime = _formattingTime;
+      });
+    } else {
+      print('SOMETHING WRONG HAPPEND');
+    }
   }
 }

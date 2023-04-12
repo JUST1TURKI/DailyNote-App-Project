@@ -40,22 +40,26 @@ class Task {
     };
   }
 
-  factory Task.fromMap(Map<String, dynamic> map) {
-    return Task(
-      id: map['id'] != null ? map['id'] as int : null,
-      title: map['title'] != null ? map['title'] as String : null,
-      note: map['note'] != null ? map['note'] as String : null,
-      isCompleted:
-          map['isCompleted'] != null ? map['isCompleted'] as int : null,
-      date: map['date'] != null ? map['date'] as String : null,
-      startTime: map['startTime'] != null ? map['startTime'] as String : null,
-      endTime: map['endTime'] != null ? map['endTime'] as String : null,
-      color: map['color'] != null ? map['color'] as int : null,
-      remind: map['remind'] != null ? map['remind'] as int : null,
-      repeat: map['repeat'] != null ? map['repeat'] as String : null,
-    );
+  Task.fromJson(Map<String, dynamic> json) {
+    id:
+    json['id'] != null ? json['id'] as int : null;
+    title:
+    json['title'] != null ? json['title'] as String : null;
+    note:
+    json['note'] != null ? json['note'] as String : null;
+    isCompleted:
+    json['isCompleted'] != null ? json['isCompleted'] as int : null;
+    date:
+    json['date'] != null ? json['date'] as String : null;
+    startTime:
+    json['startTime'] != null ? json['startTime'] as String : null;
+    endTime:
+    json['endTime'] != null ? json['endTime'] as String : null;
+    color:
+    json['color'] != null ? json['color'] as int : null;
+    remind:
+    json['remind'] != null ? json['remind'] as int : null;
+    repeat:
+    json['repeat'] != null ? json['repeat'] as String : null;
   }
-
-  factory Task.fromJson(String source) =>
-      Task.fromMap(json.decode(source) as Map<String, dynamic>);
 }
