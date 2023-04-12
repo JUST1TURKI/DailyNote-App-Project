@@ -18,7 +18,7 @@ void main() async {
     ],
   );
 
-  WidgetsFlutterBinding.ensureInitialized;
+  WidgetsFlutterBinding.ensureInitialized();
   // NotifyHelper notifyHelper = NotifyHelper();
   // await notifyHelper.initializeNotification();
   await DBHelper.initDb();
